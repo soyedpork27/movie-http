@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
 
+import {useState} from 'react';
+import { movieHttp } from './app/axios/httpMovie';
+
 function App() {
+
+  const [movie , setMovie] = useState({});
+
+  const viewMovie = async () => {
+    const response = await movieHttp.get('');
+    setMovie({...response.data.boxOfficeResult});
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={viewMovie}>클릭 시 영화 순위 가져옴</button>
+
+      <ul>
+        {movie.dailyBoxOfficeList?.map((i)=>(<li key={i.rank}>({i.rank}위) {i.movieNm}</li>))}
+      </ul>
+
+    </>
   );
 }
 
