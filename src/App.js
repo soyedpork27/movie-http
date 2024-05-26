@@ -10,6 +10,7 @@ function App() {
   const viewMovie = async () => {
     const response = await movieHttp.get('');
     setMovie({...response.data.boxOfficeResult});
+    console.log(response.data.boxOfficeResult.dailyBoxOfficeList);
   }
 
   return (

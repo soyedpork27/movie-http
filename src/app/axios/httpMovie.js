@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 export const movieHttp = axios.create({
-  baseURL : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json',
+  baseURL : 'https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json',
   headers : {
     "Content-Type" : "application/json"
   },
